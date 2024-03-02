@@ -12,9 +12,9 @@ from src.AttendanceSystemData import Data
 class Control:
     # define the password to check the user or administrator
     password = '123456'
-    images_path = './captured_images/'
+    images_path = './data/captured_images/'
     data_path = './data/'
-    gray_images_path = './gray_images/'
+    gray_images_path = './data/gray_images/'
     password_file_path = './data/pwd.file'
 
 
@@ -162,7 +162,8 @@ class Control:
         if not os.path.exists(Control.data_path):
             os.makedirs(Control.data_path)
         recognizer = cv2.face.LBPHFaceRecognizer_create()  # 初始化LBPH识别器
-        recognizer.train(faces, np.array(labels))
+        if faces is not None and len(faces) != 0:
+            recognizer.train(faces, np.array(labels))
         recognizer.save(data_path)
         Data.update_info_table()
 

@@ -9,7 +9,7 @@ from src.PulseDetect import PulseDetect
 class Data:
     App = None
     data_path = './data'
-    gray_images_path = './gray_images/'
+    gray_images_path = './data/gray_images/'
     keymap_index = dict()
     keymap_label = dict()
     status_index = defaultdict(bool)
